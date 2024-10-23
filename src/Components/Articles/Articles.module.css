@@ -1,0 +1,33 @@
+.cardContainer {
+    display: flex;
+  
+    flex-wrap: wrap; /* Allows items to wrap onto multiple lines */
+    justify-content: space-between; /* Spaces cards evenly */
+    gap: 1rem; /* Adds gap between the cards */
+  }
+  
+  .card {
+    flex: 1 1 calc(33.333% - 1rem); /* Each card will take up 1/3 of the row */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .card img {
+    width: 100%;
+    height: ;
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      flex: 1 1 calc(50% - 1rem); /* For smaller screens, show 2 cards per row */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      flex: 1 1 100%; /* For mobile screens, show 1 card per row */
+    }
+  }
+  
