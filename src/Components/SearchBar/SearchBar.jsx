@@ -1,45 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import styles from './SearchBar.module.css'
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-export const SearchBar = ({ SetQuery,reset}) => {
+export const SearchBar = ({ SetQuery,TriggerFetch}) => {
   const url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
   const [query, setQuery1] = useState(""); // Initial query
  const navigate=useNavigate();
 
  const handleSubmit = (e) => {
+  
   e.preventDefault()
+  SetQuery(query)
+  TriggerFetch()
+  
   navigate(`/Meals?search=${query}`);  
+  
  }
+ useEffect(()=>{
+  TriggerFetch()
+
+ },[query])
 const HandleHome=(e)=>{
   e.preventDefault()
   navigate('/');
-}
-
-  useEffect(() => {
-    fetch(url + query) 
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        SetQuery(data,query);
-        
-        
-        
-        
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, [query]); // Add query to dependencies
-
- 
+} 
   return (
     <div >
-    <form  className={styles.Search} onSubmit={(e)=>handleSubmit(e)}>
+    <form  className={styles.Search} onSubmit={(e)=>handleSubmit(e)} >
       <input className={styles.SearchField}
         type="text"
         value={query}
@@ -67,13 +55,14 @@ console.log("consloing "+e);
 
 HandleIndex(e)
 navigate(`/recipie?index=${e}`);
-e.preventDefault()
+// e.preventDefault()
 
   }
  
   
   return (
     <div className={styles.cardContainer}>
+   { console.log("data at meals"+data.meals.map(m=>m.strmeal))}
     
       {data.meals && data.meals.map((meal, index) => (
              

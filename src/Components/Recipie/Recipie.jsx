@@ -2,36 +2,42 @@ import React, { useEffect } from 'react'
 import styles  from './Recipie.module.css'
 import { useLocation } from 'react-router-dom';
 
-export const Recipie = ({data}) => {
+export const Recipie = ({data,TriggerFetch}) => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const idex = params.get('index');
   const idx = idex ? parseInt(idex, 10) : null; 
 
-  // Check for valid index and access ingredients safely
-  
-
-
-
-    console.log('i am from recipe'+idx);
-    console.log('from the recie'+data.meals);
+    
+   const savedData = localStorage.getItem('Meals');
+   const parsed=JSON.parse(savedData)
+   console.log("from local"+parsed.meals[1].strMeasure2);
+   
     const ingredients = [];
-    if (idx !== null && data.meals) {
+    if (idx !== null && parsed.meals) {
       console.log("i am at for loop"+idx);
+     
       
-    for (let i = 1; i <= 20; i++) {
-        const ingredient = data.meals&& data.meals[idx][`strIngredient${i}`];
-        const measure = data.meals&& data.meals[idx][`strMeasure${i}`];
+      for (let i = 1; i <= 20; i++) {
+        const ingredient = parsed.meals&& parsed.meals[idx][`strIngredient${i}`];
+        const measure = parsed.meals&& parsed.meals[idx][`strMeasure${i}`];
       console.log(i);
       
       if (ingredient && measure) {
         ingredients.push({ ingredient, measure });
       }
     }
+    
+}
+else {
+ 
+
+ 
+
 }
 let stringBreak=''
 if(idx>0){
-   stringBreak=data.meals[idx].strInstructions.split('.')
+   stringBreak=parsed.meals[idx].strInstructions.split('.')
 }
 
 return (
@@ -53,7 +59,7 @@ return (
 }
     </div>
 <div  >
-  <img className={styles.mealImage} src={data.meals[idx].strMealThumb} />
+  <img className={styles.mealImage} src={parsed.meals[idx].strMealThumb} />
 
 </div>
  

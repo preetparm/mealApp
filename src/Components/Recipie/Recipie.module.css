@@ -50,6 +50,60 @@ text-align: center;
   grid-column-start: 1;
   grid-row-start: 2;
 }
+@media (max-width: 768px) {
+   
+  .ingredientItem {
+    display: flex;
+    flex: 1 1 calc(50% - 1rem);
+    text-align: center;
+       height: auto; 
+      
+      
+     }
+
+}
+
+@media (max-width: 480px) {
+  
+ .wrapper{
+  
+  display: flex;
+      
+  justify-content: flex-start; 
+  align-items: stretch; 
+  /* flex-flow: column; */ 
+  flex-direction: column;  
  
+text-align: center;
+   height: auto; 
+   margin: 0;
+   padding: 0;
+      
+ 
+ }
+  .cardCntainer {
+    
+
+      display: flex;
+      
+      justify-content: flex-start; 
+      align-items: stretch; 
+      /* flex-flow: column; */ 
+      flex-direction: column;  
+    text-align: center;
+       height: auto; 
+       margin: 0;
+       padding: 0;
+          
+     }
+     
+     .mealImage{
+max-width: 100px;
+max-height: 100px;
+
+     }
+
+}
+
  
   
