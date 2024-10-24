@@ -86,8 +86,8 @@ function App() {
     
     <Routes>
   <Route path="/" element={<Articles data={data} />} />
-  <Route path="/Meals" element={<Meals HandleIndex={HandleIndex} data={query} />} />
-  <Route path="/Recipie" element={<Recipie data={query} idx={index} TriggerFetch={TriggerFetch} />} />
+  <Route path="/Meals" element={<Meals HandleIndex={HandleIndex} data={query} search={search} />} />
+  <Route path="/Recipie" element={<Recipie data={query} idx={index}  />} />
 </Routes>
 
      

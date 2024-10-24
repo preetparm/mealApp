@@ -17,10 +17,7 @@ export const SearchBar = ({ SetQuery,TriggerFetch}) => {
   navigate(`/Meals?search=${query}`);  
   
  }
- useEffect(()=>{
-  TriggerFetch()
-
- },[query])
+ 
 const HandleHome=(e)=>{
   e.preventDefault()
   navigate('/');
@@ -43,7 +40,7 @@ const HandleHome=(e)=>{
 
 
 
-export const Meals = ({HandleIndex,data}) => {
+export const Meals = ({HandleIndex,data,search}) => {
   const navigate=useNavigate();
 
   console.log("here is data"+data);
@@ -54,7 +51,7 @@ const HandleRecepie=(e)=>{
 console.log("consloing "+e);
 
 HandleIndex(e)
-navigate(`/recipie?index=${e}`);
+navigate(`/recipie?search=${search}&index=${e}`);
 // e.preventDefault()
 
   }
