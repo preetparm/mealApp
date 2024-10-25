@@ -6,7 +6,7 @@
   
 }
     
- .cardCntainer {
+ .cardContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
     grid-gap: 6px; /* Gap between grid items */
@@ -81,7 +81,7 @@ text-align: center;
       
  
  }
-  .cardCntainer {
+  .cardContainer {
     
 
       display: flex;
